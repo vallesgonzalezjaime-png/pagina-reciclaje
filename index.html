@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reciclaje y Futuro Verde</title>
+  <style>
+    /* --- Estilos base --- */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #e3f9e5, #d0f0f7);
+      color: #333;
+      scroll-behavior: smooth;
+      animation: fadeInPage 1s ease-in;
+      text-align: center; /* Centrado de textos */
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      background: linear-gradient(135deg, #2e8b57, #145a32);
+      color: white;
+      padding: 90px 20px;
+      text-align: center;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      animation: fadeInDown 2s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      letter-spacing: 4px;
+      animation: glow 2.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ffd700; }
+      to { text-shadow: 0 0 25px #00ff99, 0 0 35px #00c853; }
+    }
+
+    header p {
+      font-size: 1.6rem;
+      margin-top: 15px;
+      opacity: 0.9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background: #145a32;
+      padding: 15px 0;
+      border-radius: 0 0 25px 25px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: fadeIn 2s ease;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+      transform: scale(1.1);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background: #ffd700;
+      left: 0;
+      bottom: -5px;
+      transform: scaleX(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeInUp 2s ease;
+      text-align: center; /* Centrado de contenido */
+    }
+
+    section h2 {
+      font-size: 3rem;
+      color: #2e8b57;
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      margin: 10px auto;
+      width: 80px;
+      height: 4px;
+      background: #ffd700;
+      border-radius: 2px;
+    }
+
+    section p {
+      line-height: 1.9;
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .video-container {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0;
+      animation: zoomIn 2s ease;
+    }
+
+    video {
+      border: 6px solid #2e8b57;
+      border-radius: 25px;
+      width: 80%;
+      max-width: 750px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px 30px;
+      border: none;
+      background: linear-gradient(135deg, #2e8b57, #145a32);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      background: #ffd700;
+      color: #333;
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .carousel {
+      font-size: 1.9rem;
+      font-weight: bold;
+      color: #145a32;
+      margin: 50px auto;
+      min-height: 70px;
+      animation: fadeIn 2s infinite alternate;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      transition: transform 0.6s; /* solo escala, sin fade */
+    }
+
+    .gallery img:hover {
+      transform: scale(1.12);
+      opacity: 0.9;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+
+    .card h3 {
+      color: #2e8b57;
+      margin-bottom: 15px;
+    }
+
+    .testimonios {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+      justify-content: center;
+    }
+
+    .testimonio {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      width: 280px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .testimonio:hover {
+      transform: scale(1.08);
+    }
+
+    .testimonio h4 {
+      margin-top: 10px;
+      color: #145a32;
+    }
+
+    .cta {
+      background: #2e8b57;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 40px;
+      margin-top: 60px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: pulse 3s infinite;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 25px;
+      font-size: 2.5rem;
+    }
+
+    footer {
+      background: #145a32;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 40px;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+    }
+
+    footer .social {
+      margin: 15px 0;
+    }
+
+    footer .social a {
+      margin: 0 10px;
+      font-size: 1.8rem;
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    footer .social a:hover {
+      color: #ffd700;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌎 Nuestro Futuro Verde 🌎</h1>
+    <p>Innovación, conciencia y acción para un planeta mejor</p>
+    <a href="#accion" class="btn">¡Únete al cambio!</a>
+    <a href="#galeria" class="btn">Ver Inspiración</a>
+  </header>
+
+  <nav>
+    <a href="#que-es">¿Qué es?</a>
+    <a href="#importancia">Importancia</a>
+    <a href="#tipos">Tipos</a>
+    <a href="#galeria">Galería</a>
+    <a href="#video">Video</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#accion">Actúa</a>
+  </nav>
+
+  <section id="que-es">
+    <h2>¿Qué es el reciclaje?</h2>
+    <p>
+      El reciclaje es mucho más que un proceso: es un símbolo de esperanza y responsabilidad colectiva.
+      Cada envase, cada hoja de papel y cada botella puede convertirse en un nuevo recurso en lugar de basura.
+    </p>
+    <p>
+      Reciclar significa cerrar un ciclo, darle valor a lo que parecía inútil y convertirlo en el motor de un futuro sostenible.
+    </p>
+  </section>
+
+  <section id="importancia">
+    <h2>Importancia del Reciclaje</h2>
+    <p>
+      Reciclar no es una opción, es una necesidad urgente. Gracias a esta práctica podemos reducir emisiones,
+      ahorrar recursos y garantizar un futuro sostenible para las próximas generaciones.
+    </p>
+    <div class="carousel" id="frases"></div>
+  </section>
+  <section id="reciclaje-elegante">
+  <style>
+    #reciclaje-elegante {
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #d6f5e3, #ecfdf5);
+      color: #2f4f4f;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+    }
+
+    #reciclaje-elegante h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #1b4332;
+    }
+
+    #reciclaje-elegante p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #3a5a40;
+    }
+
+    .grid-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .tarjeta {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-8px);
+    }
+
+    .tarjeta h3 {
+      color: #2d6a4f;
+      margin-bottom: 0.8rem;
+    }
+  </style>
+
+  <h2>🌱 Reciclar transforma el mundo</h2>
+  <p>Un pequeño hábito puede cambiar el destino del planeta.</p>
+
+  <div class="grid-info">
+    <div class="tarjeta">
+      <h3>🌍 Menos basura</h3>
+      <p>Cada kilo reciclado evita que toneladas terminen en vertederos.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>💧 Agua protegida</h3>
+      <p>Reciclar papel reduce el consumo de agua en un 50%.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>⚡ Energía limpia</h3>
+      <p>Reciclar aluminio ahorra el 95% de energía frente a producirlo.</p>
+    </div>
+  </div>
+</section>
+<section id="juego-reciclaje" style="padding:60px 20px; text-align:center; border-radius:30px; margin-top:50px; box-shadow:0 8px 25px rgba(0,0,0,0.2); background:#87ceeb;">
+  <h2 style="color:#1b5e20; font-size:2.5rem; text-shadow:2px 2px 5px rgba(0,0,0,0.3); margin-bottom:15px;">🎮 Mini Juego: Atrapa Plásticos ♻️</h2>
+  <p style="font-size:1.2rem; color:#004d40; margin-bottom:30px;">Usa las flechas izquierda y derecha para mover tu contenedor y atrapa solo las botellas de plástico 🍼. Evita los demás residuos. ¡Alcanza 100 puntos y gana!</p>
+  
+  <canvas id="canvasJuego" width="350" height="600" style="border:4px solid #2e7d32; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.3); background:#87ceeb;"></canvas>
+  
+  <div id="puntaje" style="margin-top:20px; font-size:1.5rem; font-weight:bold; color:#004d40;">Puntos: 0</div>
+  <div id="mensaje" style="margin-top:10px; font-size:1.3rem; font-weight:bold; color:#ff5722;"></div>
+
+  <script>
+    (function(){
+      const canvas = document.getElementById('canvasJuego');
+      const ctx = canvas.getContext('2d');
+
+      let score = 0;
+      let gameOver = false;
+      const bin = { x: 145, y: 540, width: 60, height: 50 };
+      let items = [];
+      const itemSize = 30;
+
+      // Fondo estilo videojuego (cielo + pasto + nubes)
+      function drawBackground(){
+        // Cielo
+        ctx.fillStyle = "#87ceeb";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        // Pasto
+        ctx.fillStyle = "#4caf50";
+        ctx.fillRect(0,canvas.height-60,canvas.width,60);
+        // Nubes simples
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.arc(60,60,20,0,Math.PI*2);
+        ctx.arc(80,60,25,0,Math.PI*2);
+        ctx.arc(100,60,20,0,Math.PI*2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(250,100,25,0,Math.PI*2);
+        ctx.arc(280,100,20,0,Math.PI*2);
+        ctx.arc(260,110,20,0,Math.PI*2);
+        ctx.fill();
+      }
+
+      // Dibuja el tambo de reciclaje
+      function drawBin(){
+        // Base
+        ctx.fillStyle = "#2e7d32";
+        ctx.fillRect(bin.x, bin.y, bin.width, bin.height);
+        // Bordes
+        ctx.strokeStyle = "#1b5e20";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(bin.x, bin.y, bin.width, bin.height);
+        // Tapa
+        ctx.fillStyle = "#1b5e20";
+        ctx.fillRect(bin.x-5, bin.y-10, bin.width+10, 10);
+        // Logo de reciclaje grande
+        ctx.fillStyle = "#ffd700";
+        ctx.font = "20px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("♻️", bin.x+bin.width/2, bin.y+bin.height/2);
+      }
+
+      // Dibuja los items (basura)
+      function drawItems(){
+        ctx.font = itemSize + "px Arial";
+        ctx.textAlign="center";
+        ctx.textBaseline="middle";
+        items.forEach(item=>{
+          let emoji = "";
+          switch(item.type){
+            case "plastic": emoji="🍼"; break;
+            case "paper": emoji="📄"; break;
+            case "organic": emoji="🍎"; break;
+          }
+          ctx.fillText(emoji, item.x + itemSize/2, item.y + itemSize/2);
+        });
+      }
+
+      function updateItems(){
+        items.forEach((item,index)=>{
+          item.y += 3 + item.speed;
+          if(item.y + itemSize > bin.y && item.x + itemSize/2 > bin.x && item.x + itemSize/2 < bin.x + bin.width){
+            if(item.type === "plastic"){
+              score += 10;
+              document.getElementById('mensaje').innerText = "✅ ¡Correcto!";
+            }else{
+              score -= 5;
+              document.getElementById('mensaje').innerText = "❌ ¡Incorrecto!";
+            }
+            items.splice(index,1);
+            document.getElementById('puntaje').innerText = "Puntos: "+score;
+            if(score >= 100 && !gameOver){
+              gameOver = true;
+              celebrate();
+            }
+          }else if(item.y > canvas.height){
+            items.splice(index,1);
+          }
+        });
+      }
+
+      function spawnItem(){
+        const types = ["plastic","paper","organic"];
+        const type = types[Math.floor(Math.random()*types.length)];
+        items.push({ x: Math.random()*(canvas.width-itemSize), y:0, type:type, speed: Math.random()*2 });
+      }
+
+      function celebrate(){
+        let colors = ["#ffd700","#ff5722","#4caf50","#2196f3","#9c27b0"];
+        let confetti = [];
+        for(let i=0;i<100;i++){
+          confetti.push({x: Math.random()*canvas.width, y:Math.random()*canvas.height, color: colors[Math.floor(Math.random()*colors.length)], size: Math.random()*8+4});
+        }
+        let frame = 0;
+        function animateConfetti(){
+          drawBackground();
+          drawBin();
+          drawItems();
+          confetti.forEach(c=>{
+            ctx.fillStyle = c.color;
+            ctx.beginPath();
+            ctx.arc(c.x, c.y+frame, c.size, 0, Math.PI*2);
+            ctx.fill();
+          });
+          frame += 5;
+          if(frame < 200){
+            requestAnimationFrame(animateConfetti);
+          }else{
+            document.getElementById('mensaje').innerText = "🎉 ¡Felicidades! ¡Lograste 100 puntos! 🎉";
+          }
+        }
+        animateConfetti();
+      }
+
+      function gameLoop(){
+        if(!gameOver){
+          drawBackground();
+          drawBin();
+          drawItems();
+          updateItems();
+          requestAnimationFrame(gameLoop);
+        }
+      }
+
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='ArrowLeft' && bin.x>0) bin.x -= 20;
+        if(e.key==='ArrowRight' && bin.x < canvas.width - bin.width) bin.x += 20;
+      });
+
+      setInterval(spawnItem, 1200);
+      gameLoop();
+    })();
+  </script>
+</section>
+
+
+
+ 
+<section id="calculadora">
+  <h2>Calculadora de Impacto</h2>
+  <p>Descubre cuánto ayudas al planeta reciclando ✨</p>
+
+  <label for="kg">Kg de residuos reciclados:</label>
+  <input type="number" id="kg" min="0" placeholder="Ejemplo: 10">
+
+  <button class="btn" onclick="calcularImpacto()">Calcular</button>
+
+  <div id="resultado" style="margin-top:20px; font-size:1.2rem; font-weight:bold; color:#145a32;"></div>
+</section>
+
+
+<script>
+  function calcularImpacto() {
+    const kg = parseFloat(document.getElementById("kg").value);
+    if (isNaN(kg) || kg <= 0) {
+      document.getElementById("resultado").textContent = "⚠️ Ingresa un valor válido.";
+      return;
+    }
+
+    // Cálculos estimativos (ejemplo ilustrativo)
+    const aguaAhorrada = kg * 50; // litros de agua
+    const energiaAhorrada = kg * 1.5; // kWh
+    const emisionesEvitadas = kg * 2; // kg de CO₂
+
+    document.getElementById("resultado").innerHTML = `
+      ♻️ Con ${kg} kg reciclados ahorras:<br>
+      💧 ${aguaAhorrada.toFixed(0)} litros de agua<br>
+      🔋 ${energiaAhorrada.toFixed(1)} kWh de energía<br>
+      🌍 ${emisionesEvitadas.toFixed(1)} kg de CO₂
+    `;
+  }
+</script>
+
+ <section id="tipos">
+    <h2>Tipos de Reciclaje</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Reciclaje Mecánico</h3>
+        <p>Convierte materiales plásticos, metales y vidrio en nuevos productos.</p>
+      </div>
+      <div class="card">
+        <h3>Reciclaje Químico</h3>
+        <p>Descompone materiales en sus componentes básicos.</p>
+      </div>
+      <div class="card">
+        <h3>Reciclaje Energético</h3>
+        <p>Convierte residuos en energía aprovechable.</p>
+      </div>
+      <div class="card">
+        <h3>Upcycling</h3>
+        <p>Creatividad que transforma objetos en piezas con más valor.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- Galería con carrusel -->
+<section id="galeria">
+  <h2>Galería Inspiradora</h2>
+<!-- Carrusel simple funcional -->
+<div class="carrusel-simple">
+  <p style="text-align:center; font-weight:bold; color:#000;">Haz click en la imagen para cambiar</p>
+  <img src="img/imagen1.JPG" alt="Imagen" style="width:100%; max-width:800px; cursor:pointer;">
+</div>
+
+<script>
+  // Espera a que todo el DOM cargue
+  document.addEventListener('DOMContentLoaded', function() {
+    const imagenes = [
+      "img/imagen1.JPG",
+      "img/imagen3.JPG",
+      "img/imagen4.JPG",
+      "img/imagen5.JPG",
+      "img/imagen6.JPG",
+      "img/imagen7.JPG",
+      "img/imagen8.JPG",
+      "img/imagen9.JPG",
+      "img/imagen10.JPG",
+      "img/imagen11.JPG",
+      "img/imagen12.JPG",
+      "img/imagen13.JPG"
+    ];
+
+    let indice = 0;
+
+    const imgCarrusel = document.querySelector('.carrusel-simple img');
+
+    imgCarrusel.addEventListener('click', function() {
+      indice = (indice + 1) % imagenes.length;
+      imgCarrusel.src = imagenes[indice];
+    });
+  });
+</script>
+
+
+<style>
+  /* Texto arriba del carrusel */
+  .texto-carrusel {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff; /* resalta sobre el fondo */
+    text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    margin-bottom: 15px;
+  }
+
+  /* Contenedor del carrusel */
+  .carrusel-simple {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto 40px auto; /* centrado y espacio abajo */
+    overflow: hidden;
+    border-radius: 15px;
+    border: 3px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+  }
+
+  .carrusel-simple img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .carrusel-simple img:hover {
+    transform: scale(1.02);
+  }
+</style>
+
+<script>
+  const imagenes = [
+    "img/imagen1.JPG",
+    "img/imagen3.JPG",
+    "img/imagen4.JPG",
+    "img/imagen5.JPG",
+    "img/imagen6.JPG",
+    "img/imagen7.JPG",
+    "img/imagen8.JPG",
+    "img/imagen9.JPG",
+    "img/imagen10.JPG",
+    "img/imagen11.JPG",
+    "img/imagen12.JPG",
+    "img/imagen13.JPG"
+  ];
+
+  let indice = 0;
+
+  function siguienteImagen() {
+    indice = (indice + 1) % imagenes.length;
+    const carrusel = document.querySelector('.carrusel-simple img');
+    carrusel.src = imagenes[indice];
+  }
+</script>
+
+
+<script>
+  // Carrusel de frases
+  const frases = [
+    "♻️ Cada botella cuenta.",
+    "🌱 Un planeta limpio empieza contigo.",
+    "💡 La basura de hoy, puede ser el recurso de mañana.",
+    "🌍 No heredamos la Tierra, la tomamos prestada de nuestros hijos."
+  ];
+  let i = 0;
+  function cambiarFrase() {
+    document.getElementById("frases").textContent = frases[i];
+    i = (i + 1) % frases.length;
+  }
+  setInterval(cambiarFrase, 5000);
+  cambiarFrase();
+
+ 
+</script>
+
+  <section id="video">
+    <h2>Video sobre el Reciclaje</h2>
+   <div class="video-container">
+  <video controls>
+    <source src="img/video2.mp4" type="video/mp4">
+    Tu navegador no soporta este video.
+  </video>
+</div>
+
+
+  <section id="testimonios">
+    <h2>Testimonios</h2>
+    <div class="testimonios">
+      <div class="testimonio">
+        <p>"Desde que empecé a reciclar, siento que contribuyo a algo más grande que yo."</p>
+        <h4>- María López</h4>
+      </div>
+      <div class="testimonio">
+        <p>"Reciclar cambió mi perspectiva del mundo. Ahora veo valor donde antes veía basura."</p>
+        <h4>- Juan Pérez</h4>
+      </div>
+      <div class="testimonio">
+        <p>"Pequeños actos hacen grandes cambios. Enseño a mis hijos a reciclar."</p>
+        <h4>- Ana Torres</h4>
+      </div>
+    </div>
+  </section>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compartir Página</title>
+</head>
+<body>
+ 
+
+
+  <section id="accion" class="cta">
+    <h2>¡Es momento de actuar!</h2>
+    <p>Cada acción cuenta. ¿Qué harás hoy para proteger nuestro planeta?</p>
+    <button class="btn" onclick="alert('¡Gracias por comprometerte con un futuro más verde! 🌎♻️')">¡Me comprometo!</button>
+    <button class="btn" onclick="alert('Reutilizar es amar al planeta 💚')">Quiero Reutilizar</button>
+    <button class="btn" onclick="alert('Reducir es cuidar nuestro futuro 🌱')">Quiero Reducir</button>
+  </section>
+
+  <footer>
+    <p>© 2025 Reciclaje Futuro Verde | Diseñado con pasión por un mundo mejor 🌱</p>
+    <div class="social">
+     <!-- Botón flotante de WhatsApp -->
+<a href="https://wa.link/8l93vl" target="_blank" id="whatsapp-btn" aria-label="Chat en WhatsApp">💬</a>
+
+<style>
+  #whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: white;
+    font-size: 2rem;
+    padding: 15px 18px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 1000;
+  }
+
+  #whatsapp-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  }
+</style>
+
+    </div>
+  </footer>
+</body>
+</html>
